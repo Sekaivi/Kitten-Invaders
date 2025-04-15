@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bullet Hell Coop - Guide</title>
+    <link rel="stylesheet" href="game_info.css">
+</head>
+<body>
+    <div class="pixel-container">
+        <header>
+            <h1 class="pixel-title">BULLET HELL COOP</h1>
+            <div class="pixel-divider"></div>
+        </header>
+        
+        <!-- Navigation par onglets -->
+        <div class="tabs-container">
+            <div class="tab" data-section="gameplay">GAMEPLAY</div>
+            <div class="tab" data-section="commandes">COMMANDES</div>
+            <div class="tab" data-section="ameliorations">AMÉLIORATIONS</div>
+            <div class="tab" data-section="combat">COMBAT</div>
+            <div class="tab" data-section="boss">BOSS</div>
+            <div class="tab" data-section="balancing">STATS</div>
+        </div>
+        
+        <section class="game-section" id="gameplay">
+            <h2 class="section-title">GAMEPLAY</h2>
+            <div class="pixel-box">
+                <p>Affrontez des boss redoutables en coopération à deux joueurs.</p>
+                <p>Esquivez les projectiles, infligez des dégâts et améliorez vos capacités.</p>
+                <div class="pixel-art-container">
+                    <div class="pixel-art" id="gameplay-art"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="game-section" id="commandes">
+            <h2 class="section-title">COMMANDES</h2>
+            <div class="pixel-box">
+                <div class="controls-grid">
+                    <div class="control-group">
+                        <h3>DÉPLACEMENT</h3>
+                        <div class="key-container">
+                            <div class="key">Z</div>
+                            <div class="key-row">
+                                <div class="key">Q</div>
+                                <div class="key">S</div>
+                                <div class="key">D</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <h3>TIR</h3>
+                        <div class="key-container">
+                            <div class="key">↑</div>
+                            <div class="key-row">
+                                <div class="key">←</div>
+                                <div class="key">↓</div>
+                                <div class="key">→</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <h3>Attaque Spéciale</h3>
+                        <div class="key-container">
+                            <div class="key">E</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="game-section" id="ameliorations">
+            <h2 class="section-title">AMÉLIORATIONS</h2>
+            <div class="pixel-box">
+                <p>Après chaque boss, choisissez une amélioration parmi trois options.</p>
+                <p>Les améliorations sont réparties en quatre niveaux de rareté.</p>
+                
+                <div class="rarity-selector">
+                    <div class="rarity-tab active-rarity" data-rarity="common">GRIS</div>
+                    <div class="rarity-tab" data-rarity="rare">BLEU</div>
+                    <div class="rarity-tab" data-rarity="epic">OR</div>
+                    <div class="rarity-tab" data-rarity="legendary">ROUGE</div>
+                </div>
+                
+                <div class="rarity-content" id="common-upgrades">
+                    <div class="upgrade-cards">
+                        <div class="upgrade-card common">
+                            <div class="card-icon" id="attack-icon"></div>
+                            <h3>ATTAQUE</h3>
+                            <p>+10% vitesse d'attaque<br>+10% dégâts</p>
+                        </div>
+                        <div class="upgrade-card common">
+                            <div class="card-icon" id="speed-icon"></div>
+                            <h3>RAPIDITÉ</h3>
+                            <p>+15% vitesse d'attaque</p>
+                        </div>
+                        <div class="upgrade-card common">
+                            <div class="card-icon" id="combo-icon"></div>
+                            <h3>COMBO</h3>
+                            <p>Tous les 3èmes coups<br>+60% dégâts</p>
+                        </div>
+                        <div class="upgrade-card common">
+                            <div class="card-icon" id="maxhp-icon"></div>
+                            <h3>PLEINE FORME</h3>
+                            <p>+33% attaque quand<br>PV au maximum</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rarity-content" id="rare-upgrades" style="display:none">
+                    <div class="upgrade-cards">
+                        <div class="upgrade-card rare">
+                            <div class="card-icon" id="special-icon"></div>
+                            <h3>SPAMMEUR</h3>
+                            <p>Attaque spéciale<br>charge 33% plus vite</p>
+                        </div>
+                        <div class="upgrade-card rare">
+                            <div class="card-icon" id="shield-icon"></div>
+                            <h3>ULTRABUFF</h3>
+                            <p>+1 pv, +10% atk speed, +10% atk</p>
+                        </div>
+                        <div class="upgrade-card rare">
+                            <div class="card-icon" id="static-icon"></div>
+                            <h3>DAREDEVIL</h3>
+                            <p>+100% atk quand à 1 pv</p>
+                        </div>
+                        <div class="upgrade-card rare">
+                            <div class="card-icon" id="ally-icon"></div>
+                            <h3>CHONKY BOY</h3>
+                            <p>+2 pv</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rarity-content" id="epic-upgrades" style="display:none">
+                    <div class="upgrade-cards">
+                        <div class="upgrade-card epic">
+                            <div class="card-icon" id="homing-icon"></div>
+                            <h3>TANK</h3>
+                            <p>+4 pv</p>
+                        </div>
+                        <div class="upgrade-card epic">
+                            <div class="card-icon" id="directional-icon"></div>
+                            <h3>GAGNER=TAPER</h3>
+                            <p>+60% atk</p>
+                        </div>
+                        <div class="upgrade-card epic">
+                            <div class="card-icon" id="hitbox-icon"></div>
+                            <h3>SULFATEUSE</h3>
+                            <p>+60% atk speed</p>
+                        </div>
+                        <div class="upgrade-card epic">
+                            <div class="card-icon" id="speed-epic-icon"></div>
+                            <h3>BIG SPAMMEUR</h3>
+                            <p>L’attaque spéciale se charge 50% plus vite</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rarity-content" id="legendary-upgrades" style="display:none">
+                    <div class="upgrade-cards">
+                        <div class="upgrade-card legendary">
+                            <div class="card-icon" id="glass-icon"></div>
+                            <h3>TAPER FORT</h3>
+                            <p>+80% atk, -40% atk speed</p>
+                        </div>
+                        <div class="upgrade-card legendary">
+                            <div class="card-icon" id="slow-icon"></div>
+                            <h3>GLASS CANON</h3>
+                            <p>+100% atk, -2pv</p>
+                        </div>
+                        <div class="upgrade-card legendary">
+                            <div class="card-icon" id="tank-icon"></div>
+                            <h3>TANK</h3>
+                            <p>+5 PV<br>-40% dégâts</p>
+                        </div>
+                        <div class="upgrade-card legendary">
+                            <div class="card-icon" id="vampire-icon"></div>
+                            <h3>MEC BANAL</h3>
+                            <p>+100% atk, -100% atk spéciale dmg </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="game-section" id="combat">
+            <h2 class="section-title">COMBAT</h2>
+            <div class="pixel-box">
+                <ul class="pixel-list">
+                    <li>Esquivez les attaques ennemies</li>
+                    <li>Tir principal automatique</li>
+                    <li>Capacité spéciale chargée en infligeant des dégâts</li>
+                    <li>10 PV par joueur</li>
+                    <li>Réanimez votre allié en restant dans sa zone</li>
+                </ul>
+                <div class="pixel-art-container">
+                    <div class="pixel-art" id="combat-art"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="game-section" id="boss">
+            <h2 class="section-title">BOSS</h2>
+            <div class="pixel-box">
+                <p>Les boss envoient une grande quantité de projectiles. Vos déplacements doivent être précis et précautioneux.</p>
+                
+                
+                <div class="boss-selector">
+                    <div class="boss-tab active-boss" data-boss="boss1">BOSS 1</div>
+                    <div class="boss-tab" data-boss="boss2">BOSS 2</div>
+                    <div class="boss-tab" data-boss="boss3">BOSS 3</div>
+                    <div class="boss-tab" data-boss="boss4">BOSS 4</div>
+                </div>
+                
+                <div class="boss-content" id="boss1-content">
+                    <div class="boss-info">
+                        <h3>BOSS 1 - 5000 PV</h3>
+                        <div class="boss-phases">
+                            <div class="phase">
+                                <h4>PHASE 1 (100-50% HP)</h4>
+                                <p>Cross, Spiral</p>
+                            </div>
+                            <div class="phase">
+                                <h4>PHASE 2 (50-0% HP)</h4>
+                                <p>Spin, Cross, Spiral</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boss-image-container">
+                        <img src="image/Necro.png" alt="Boss 1" class="boss-image" id="boss1-image">
+                    </div>
+                </div>
+                
+                <div class="boss-content" id="boss2-content" style="display:none">
+                    <div class="boss-info">
+                        <h3>BOSS 2 - 8000 PV</h3>
+                        <div class="boss-phases">
+                            <div class="phase">
+                                <h4>PHASE 1 (100-50% HP)</h4>
+                                <p>Spin, Cross, Spiral</p>
+                            </div>
+                            <div class="phase">
+                                <h4>PHASE 2 (50-0% HP)</h4>
+                                <p>Rain, Cross, Spiral</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="boss-image-container">
+                        <img src="image/Demon.png" alt="Boss 2" class="boss-image" id="boss2-image">
+                    </div>
+                </div>
+                
+                <div class="boss-content" id="boss3-content" style="display:none">
+                    <div class="boss-info">
+                        <h3>BOSS 3 - 12000 PV</h3>
+                        <div class="boss-phases">
+                            <div class="phase">
+                                <h4>PHASE 1 (100-50% HP)</h4>
+                                <p>Explode, Cross, Spiral</p>
+                            </div>
+                            <div class="phase">
+                                <h4>PHASE 2 (50-0% HP)</h4>
+                                <p>Explode, Rain, Spiral</p>
+                            </div>
+                          
+                        </div>
+                    </div>
+                    <div class="boss-image-container">
+                        <img src="image/Agis.png" alt="Boss 3" class="boss-image" id="boss3-image">
+                    </div>
+                </div>
+                
+                <div class="boss-content" id="boss4-content" style="display:none">
+                    <div class="boss-info">
+                        <h3>BOSS 4 - 15000 PV</h3>
+                        <div class="boss-phases">
+                            <div class="phase">
+                                <h4>PHASE 1 (100-60% HP)</h4>
+                                <p>Spin, Line, Cross</p>
+                            </div>
+                            <div class="phase">
+                                <h4>PHASE 2 (60-20% HP)</h4>
+                                <p>Line, Rain, Explode, Cross</p>
+                            </div>
+                            <div class="phase">
+                                <h4>PHASE 3 (20-0% HP)</h4>
+                                <p>Line</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boss-image-container">
+                        <img src="image/Death.png" alt="Boss 3" class="boss-image" id="boss4-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="game-section" id="balancing">
+            <h2 class="section-title">STATISTIQUES</h2>
+            <div class="pixel-box">
+                <div class="stats-grid">
+                    <div class="stats-column">
+                        <h3 class="stats-title">JOUEUR</h3>
+                        <ul class="pixel-list">
+                            <li>PV de base: 10</li>
+                            <li>Dégâts de base: 10</li>
+                            <li>Tirs par seconde: 5</li>
+                            <li>Attaque spéciale: Vague de projectiles</li>
+                            <li>Dégâts spéciaux: 500 sur 3.5s</li>
+                            <li>Charge: 100 tirs connectés</li>
+                        </ul>
+                    </div>
+                    <div class="stats-column">
+                        <h3 class="stats-title">PATTERNS</h3>
+                        <h4 class="pattern-level">NIVEAU 1</h4>
+                        <ul class="pixel-list pattern-list">
+                            <li>Cross</li>
+                            <li>Spiral</li>
+
+                        </ul>
+                        <h4 class="pattern-level">NIVEAU 2</h4>
+                        <ul class="pixel-list pattern-list">
+                            <li>Spin</li>
+                            <li>Explode</li>
+
+
+                        </ul>
+                        <h4 class="pattern-level">NIVEAU 3</h4>
+                        <ul class="pixel-list pattern-list">
+                            <li>Rain</li>
+                            <li>Line</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script src="game_info.js"></script>
+</body>
+</html> 

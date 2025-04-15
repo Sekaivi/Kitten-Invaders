@@ -1,0 +1,579 @@
+@font-face {
+    font-family: 'PixelFont';
+    src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+}
+
+:root {
+    --main-bg: #0a0a12;
+    --box-bg: #1a1a2e;
+    --accent: #FB478A;
+    --text: #d1f7ff;
+    --secondary: #05d9e8;
+    --tertiary: #005678;
+    --highlight: #fdf06a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('image/background.png');
+    background-color: var(--main-bg);
+    color: var(--text);
+    font-family: 'PixelFont', 'Press Start 2P', monospace;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+    image-rendering: pixelated;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pixel-container {
+    max-width: 1000px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 4px solid var(--accent);
+    background-color: var(--box-bg);
+    box-shadow: 0 0 20px rgba(255, 42, 109, 0.5);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pixel-title {
+    font-size: 36px;
+    color: var(--highlight);
+    text-shadow: 4px 4px 0 var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.pixel-divider {
+    height: 4px;
+    background: repeating-linear-gradient(
+        to right,
+        var(--accent),
+        var(--accent) 10px,
+        var(--secondary) 10px,
+        var(--secondary) 20px
+    );
+    margin: 10px auto;
+}
+
+/* Styles pour les onglets */
+.tabs-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 4px solid var(--tertiary);
+}
+
+.tab {
+    padding: 10px 15px;
+    background-color: var(--tertiary);
+    color: var(--text);
+    cursor: pointer;
+    text-align: center;
+    flex-grow: 1;
+    border: 2px solid var(--secondary);
+    border-bottom: none;
+    margin: 0 2px;
+    transition: all 0.2s ease;
+    position: relative;
+    top: 4px;
+}
+
+.tab:hover {
+    background-color: var(--accent);
+    color: var(--highlight);
+}
+
+.active-tab {
+    background-color: var(--accent);
+    color: var(--highlight);
+    border-bottom: 4px solid var(--accent);
+    top: 4px;
+    z-index: 1;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.game-section {
+    margin-bottom: 30px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section-title {
+    font-size: 24px;
+    color: var(--secondary);
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 0 var(--tertiary);
+    border-left: 8px solid var(--accent);
+    padding-left: 10px;
+}
+
+.pixel-box {
+    border: 4px solid var(--tertiary);
+    background-color: rgba(26, 26, 46, 0.8);
+    padding: 20px;
+    position: relative;
+}
+
+.pixel-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(5, 217, 232, 0.05),
+        rgba(5, 217, 232, 0.05) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+    pointer-events: none;
+}
+
+.pixel-list {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.pixel-list li {
+    position: relative;
+    padding: 5px 0;
+    padding-left: 20px;
+}
+
+.pixel-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent);
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+}
+
+.controls-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.control-group {
+    text-align: center;
+}
+
+.control-group h3 {
+    margin-bottom: 15px;
+    color: var(--highlight);
+}
+
+.key-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.key-row {
+    display: flex;
+    gap: 5px;
+}
+
+.key {
+    width: 50px;
+    height: 50px;
+    background-color: var(--tertiary);
+    border: 3px solid var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--highlight);
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+    transition: all 0.1s ease;
+    cursor: pointer;
+}
+
+.key:hover {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+}
+
+.upgrade-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.upgrade-card {
+    width: 180px;
+    background-color: var(--tertiary);
+    border: 3px solid var(--secondary);
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 5px 0 rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.upgrade-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 10px;
+    background-color: var(--accent);
+    border: 2px solid var(--highlight);
+}
+
+#attack-icon {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fdff6a"><path d="M7 5L3 7V3L7 5M18 3V7L22 5L18 3M12 8L9 12H15L12 8M12 20L15 14H9L12 20Z"/></svg>');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#health-icon {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fdff6a"><path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5C22 12.27 18.6 15.36 13.45 20.03L12 21.35Z"/></svg>');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#glass-icon {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fdff6a"><path d="M2 21H12V19H2M6 17H16V15H6M11 13H21V11H11M16 9H22V7H16M13 5H19V3H13"/></svg>');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.pixel-art-container {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.pixel-art {
+    width: 200px;
+    height: 120px;
+    background-color: var(--tertiary);
+    border: 3px solid var(--secondary);
+    position: relative;
+    overflow: hidden;
+}
+
+#gameplay-art {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="120" viewBox="0 0 200 120"><rect width="200" height="120" fill="%231a1a2e"/><rect x="80" y="80" width="10" height="10" fill="%23ff2a6d"/><rect x="110" y="70" width="10" height="10" fill="%2305d9e8"/><circle cx="50" cy="40" r="20" fill="%23fdff6a"/><circle cx="150" cy="30" r="5" fill="%23ff2a6d"/><circle cx="130" cy="50" r="5" fill="%23ff2a6d"/><circle cx="170" cy="40" r="5" fill="%23ff2a6d"/></svg>');
+}
+
+#combat-art {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="120" viewBox="0 0 200 120"><rect width="200" height="120" fill="%231a1a2e"/><rect x="80" y="80" width="10" height="10" fill="%23ff2a6d"/><rect x="110" y="70" width="10" height="10" fill="%2305d9e8"/><circle cx="95" cy="75" r="30" fill="none" stroke="%23fdff6a" stroke-width="2" stroke-dasharray="5,5"/><circle cx="40" cy="40" r="5" fill="%23ff2a6d"/><circle cx="60" cy="30" r="5" fill="%23ff2a6d"/><circle cx="30" cy="60" r="5" fill="%23ff2a6d"/><circle cx="160" cy="40" r="5" fill="%23ff2a6d"/><circle cx="140" cy="60" r="5" fill="%23ff2a6d"/><circle cx="170" cy="70" r="5" fill="%23ff2a6d"/></svg>');
+}
+
+#boss-art {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="120" viewBox="0 0 200 120"><rect width="200" height="120" fill="%231a1a2e"/><rect x="80" y="80" width="10" height="10" fill="%23ff2a6d"/><rect x="110" y="70" width="10" height="10" fill="%2305d9e8"/><rect x="90" y="30" width="30" height="30" fill="%23fdff6a"/><circle cx="95" cy="40" r="5" fill="%231a1a2e"/><circle cx="115" cy="40" r="5" fill="%231a1a2e"/><rect x="95" y="50" width="20" height="5" fill="%231a1a2e"/><circle cx="40" cy="40" r="5" fill="%23ff2a6d"/><circle cx="60" cy="30" r="5" fill="%23ff2a6d"/><circle cx="30" cy="60" r="5" fill="%23ff2a6d"/><circle cx="160" cy="40" r="5" fill="%23ff2a6d"/><circle cx="140" cy="60" r="5" fill="%23ff2a6d"/><circle cx="170" cy="70" r="5" fill="%23ff2a6d"/></svg>');
+}
+
+/* Animation pour les projectiles */
+.pixel-art.animated::before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    animation: projectileAnimation 3s infinite linear;
+    opacity: 0.8;
+}
+
+.pixel-art.animated::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background-color: var(--highlight);
+    border-radius: 50%;
+    animation: projectileAnimation2 4s infinite linear;
+    animation-delay: 1s;
+    opacity: 0.8;
+}
+
+@keyframes projectileAnimation {
+    0% { left: -5px; top: 50%; }
+    100% { left: 100%; top: 20%; }
+}
+
+@keyframes projectileAnimation2 {
+    0% { right: -5px; bottom: 30%; }
+    100% { right: 100%; bottom: 70%; }
+}
+
+@media (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+    
+    .pixel-container {
+        margin: 0 auto;
+        width: 95%;
+    }
+    
+    .pixel-title {
+        font-size: 24px;
+    }
+    
+    .section-title {
+        font-size: 18px;
+    }
+    
+    .controls-grid {
+        flex-direction: column;
+    }
+    
+    .upgrade-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tabs-container {
+        flex-wrap: wrap;
+    }
+    
+    .tab {
+        flex-basis: 45%;
+        margin-bottom: 5px;
+        font-size: 12px;
+        padding: 8px 5px;
+    }
+}
+
+/* Styles pour les onglets de rareté */
+.rarity-selector, .boss-selector {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    border-bottom: 3px solid var(--tertiary);
+}
+
+.rarity-tab, .boss-tab {
+    padding: 8px 12px;
+    background-color: var(--tertiary);
+    color: var(--text);
+    cursor: pointer;
+    text-align: center;
+    flex-grow: 1;
+    border: 2px solid var(--secondary);
+    border-bottom: none;
+    margin: 0 2px;
+    transition: all 0.2s ease;
+    position: relative;
+    top: 3px;
+    font-size: 14px;
+}
+
+.rarity-tab:hover, .boss-tab:hover {
+    background-color: var(--accent);
+    color: var(--highlight);
+}
+
+.active-rarity, .active-boss {
+    background-color: var(--accent);
+    color: var(--highlight);
+    border-bottom: 3px solid var(--accent);
+    top: 3px;
+    z-index: 1;
+    font-weight: bold;
+}
+
+/* Styles pour les cartes d'amélioration par rareté */
+.upgrade-card.common {
+    border-color: #a0a0a0;
+    background-color: rgba(80, 80, 80, 0.7);
+}
+
+.upgrade-card.rare {
+    border-color: #4287f5;
+    background-color: rgba(30, 60, 120, 0.7);
+}
+
+.upgrade-card.epic {
+    border-color: #ffd700;
+    background-color: rgba(120, 100, 10, 0.7);
+}
+
+.upgrade-card.legendary {
+    border-color: #ff4040;
+    background-color: rgba(120, 30, 30, 0.7);
+}
+
+/* Styles pour les informations de boss */
+.boss-info {
+    margin-bottom: 20px;
+}
+
+.boss-info h3 {
+    color: var(--highlight);
+    margin-bottom: 10px;
+    text-align: center;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.boss-special {
+    color: var(--accent);
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.boss-phases {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-around;
+}
+
+.phase {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--tertiary);
+    padding: 10px;
+    border-radius: 5px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.phase h4 {
+    color: var(--secondary);
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* Styles pour la section statistiques */
+.stats-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.stats-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+.stats-title {
+    color: var(--highlight);
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 5px;
+}
+
+.pattern-level {
+    color: var(--secondary);
+    margin: 15px 0 5px 0;
+    font-size: 14px;
+}
+
+.pattern-list {
+    margin-bottom: 10px;
+}
+
+/* Adaptation mobile pour les onglets de rareté et boss */
+@media (max-width: 768px) {
+    .rarity-selector, .boss-selector {
+        flex-wrap: wrap;
+    }
+    
+    .rarity-tab, .boss-tab {
+        flex-basis: 45%;
+        margin-bottom: 5px;
+        font-size: 12px;
+        padding: 6px 4px;
+    }
+}
+
+/* Ajoutez ces styles pour les images de boss */
+ .boss-image-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+}
+
+.boss2-image {
+    justify-content: center;
+}
+
+@keyframes bossFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes bossGlitch {
+    0%, 100% { filter: drop-shadow(0 0 8px var(--accent)); }
+    25% { filter: drop-shadow(0 0 8px var(--secondary)) hue-rotate(5deg); }
+    26% { filter: drop-shadow(0 0 8px var(--accent)); }
+    74% { filter: drop-shadow(0 0 8px var(--accent)); }
+    75% { filter: drop-shadow(0 0 8px var(--highlight)) hue-rotate(-5deg); }
+    76% { filter: drop-shadow(0 0 8px var(--accent)); }
+    94% { filter: drop-shadow(0 0 8px var(--accent)); }
+    95% { filter: drop-shadow(0 0 12px var(--secondary)) brightness(1.2); }
+    96% { filter: drop-shadow(0 0 8px var(--accent)); }
+}
+
+#boss1-image {
+    animation-delay: 0s;
+}
+
+#boss2-image {
+    animation-delay: 0.5s;
+}
+
+#boss3-image {
+    animation-delay: 1s;
+}
+
+/* Ajoutez un effet de particules autour des boss */
+
+@keyframes particleFloat1 {
+    0% { left: 0; top: 50%; opacity: 0; }
+    50% { opacity: 0.6; }
+    100% { left: 100%; top: 20%; opacity: 0; }
+}
+
+@keyframes particleFloat2 {
+    0% { right: 0; bottom: 30%; opacity: 0; }
+    50% { opacity: 0.6; }
+    100% { right: 100%; bottom: 70%; opacity: 0; }
+} 

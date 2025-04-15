@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" contents="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Kitten Invaders</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/style.js" defer="defer"></script>
+  <script src="/js/game.js" defer="defer"></script>
+  <script src="/js/socket.js" defer="defer"></script>
+  <script src="/js/Player.js"></script>
+  <script src="/js/Boss.js"></script>
+</head>
+
+<body>
+<audio id="menuMusic" autoplay loop>
+    <source src="media/audio/menu.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+  <button id="pauseGame">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+    </svg>
+  </button>
+
+  <div class="modal container">
+    <div class="game-title">
+      <img src="../media/logo.png" alt="Kitten Invaders"/>
+    </div>
+    <div class="menu">
+      <button class="pixel-button" id="playButton">JOUER</button>
+    </div>
+  </div>
+
+  <div id="startGameMenu" class="modal">
+    <div class="modal-content">
+      <div class="title">
+        <h1><img src="../media/menu/startGame.png" alt="Menu" /></h1>
+      </div>
+
+      <div class="menu-options">
+        <div class="selectable" id="player1">
+          <img src="../media/menu/player1.png" alt="1 player" />
+        </div>
+
+        <div class="selectable" id="player2button">
+          <img src="../media/menu/player2.png" alt="2 players" />
+        </div>
+
+        <a href="../html/demo/game_info.html" target="_blank" class="selectable" id="demo">
+          <img src="../media/menu/demo.png" alt="Demo" />
+        </a>
+
+        <div class="selectable exit">
+          <img src="../media/menu/exit.png" alt="Exit" />
+        </div>
+
+        <!-- Flèche de sélection -->
+        <img src="../media/menu/flèche.png" id="arrow" class="arrow" />
+      </div>
+    </div>
+  </div>
+
+  <div id="menu-container" class="modal">
+    <div class="modal-content">
+      <div class="title">
+        <h1><img src="../media/menu/menu.png" alt="Menu" /></h1>
+      </div>
+
+      <div class="menu-options">
+        <div class="selectable" id="continueDiv">
+          <img src="../media/menu/continue.png" alt="Continue" />
+        </div>
+
+        <a href="../html/demo/game_info.html" target="_blank" class="selectable" id="demo">
+          <img src="../media/menu/demo.png" alt="Demo" />
+        </a>
+
+        <div class="selectable" id="creditsDiv">
+          <img src="../media/menu/credits.png" alt="Credits" />
+        </div>
+
+        <div class="selectable" id="optionDiv">
+          <img src="../media/menu/options.png" alt="Option" />
+        </div>
+
+        <div class="selectable exit">
+          <img src="../media/menu/exit.png" alt="Exit" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="gameCanvas"></canvas>
+
+  <div id="connectingToGame" class="modal">
+    <div class="modal-content">
+      <p id="connectingText"></p>
+      <button id="createRoom">Créer une partie</button>
+      <button id="displayJoinRoom">Rejoindre une partie</button>
+    </div>
+  </div>
+
+  <div id="joiningRoom" class="modal">
+    <div class="modal-content">
+      <p id="joiningText"></p>
+      <input type="text" id="roomCodeInput" placeholder="Ex: ABCD">
+      <br>
+      <button id="joinRoom">Rejoindre une partie</button>
+      <button id="cancelJoin">Annuler</button>
+    </div>
+  </div>
+
+  <div id="gameOverScreen" class="modal">
+    <div class="modal-content">
+      <div class="title">
+        <h1><img src="../media/menu/gameOver.png" alt="Game Over" /></h1>
+      </div>
+
+      <div class="menu-options">
+
+        <div class="selectable" id="playAgain">
+          <img src="../media/menu/RestartGame.png" alt="1 player" />
+        </div>
+
+        <div class="selectable" id="quit">
+          <img src="../media/menu/quit.png" alt="2 players" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="DialogBox" class="modal">
+    <div class="modal-content">
+      <p id="dialogText"></p>
+    </div>
+  </div>
+
+  <div id="UpgradesBox" class="modal">
+    <div class="modal-content">
+      <p id="upgradesText"></p>
+      <div id="upgradesMenu">
+        <button id="upgrade1" class="upgradeButton">Upgrade 1</button>
+        <button id="upgrade2" class="upgradeButton">Upgrade 2</button>
+        <button id="upgrade3" class="upgradeButton">Upgrade 3</button>
+      </div>
+      <button disabled id="confirmButton">Choisir une upgrade nya~ :</button>
+    </div>
+  </div>
+  
+  <div id="victory" class="modal">
+    <div class="modal-content">
+      <div class="title">
+        <h1><img src="../media/menu/victoire.png" alt="Game Over"/></h1>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
